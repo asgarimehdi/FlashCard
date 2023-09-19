@@ -7,5 +7,9 @@ const words = ref(q)
 </script>
 
 <template>
-  <Card v-for="word in words" :key="word.id" :word="word" />
+  <div class="container-fluid">
+    <div class="row  justify-content-center">
+      <Card v-for="word in words" :key="word.id" :word="word" />
+    </div>
+  </div>
 </template>
