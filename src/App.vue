@@ -13,6 +13,9 @@ import TheOffcanvas from './components/TheOffcanvas.vue';
   <RouterView />
 </template>
 
-<style scoped>
-
+<style>
+.vazir {
+  font-family: Vazirmatn;
+  font-variation-settings: "wght" 400;
+}
 </style>
