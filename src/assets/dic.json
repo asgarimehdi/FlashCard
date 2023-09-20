@@ -1,42 +1,82 @@
 [
     {
         "id": 1,
-        "img": "https://marvel-b1-cdn.bc0a.com/f00000000026007/resilienteducator.com/wp-content/uploads/2012/11/AdobeStock_60467600_cup.jpg",
-        "name": "Math",
-        "persian": "ریاضی"
-         
+        "name": "abandon",
+        "persian": "ترک کردن ، رها سازی ، دست کشیدن از"
     },
     {
         "id": 2,
-        "img": "https://blogs.biomedcentral.com/on-biology/wp-content/uploads/sites/5/2017/12/DNA.png",
-        "name": "Biology",
-        "persian": "بایولوژی"
+        "name": "keen",
+        "persian": "برنده ، تیز ، علاقمند ، قوی ، عمیق ، حساس ، تیزهوش"
     },
     {
         "id": 3,
-        "img": "http://jobs.newscientist.com/getasset/c40a5488-11be-43b0-843f-a2e6ef9f0612/",
-        "name": "Chemistry",
-        "persian":"شیمی"
-    }
-    ,
+        "name": "jealous",
+        "persian": "حسود ، حسادت"
+    },
     {
         "id": 4,
-        "img": "http://jobs.newscientist.com/getasset/c40a5488-11be-43b0-843f-a2e6ef9f0612/",
-        "name": "Hello",
-        "persian":"سلام"
-    }
-    ,
+        "name": "tact",
+        "persian": "تدبیر ، مهارت ، تراکت"
+    },
     {
         "id": 5,
-        "img": "http://jobs.newscientist.com/getasset/c40a5488-11be-43b0-843f-a2e6ef9f0612/",
-        "name": "bye",
-        "persian":"خداحافظ"
+        "name": "oath",
+        "persian": "سوگند ، قسم ، ناسزا"
     }
     ,
     {
         "id": 6,
-        "img": "http://jobs.newscientist.com/getasset/c40a5488-11be-43b0-843f-a2e6ef9f0612/",
-        "name": "cat",
-        "persian":"گربه"
+        "name": "vacant",
+        "persian": "بلا استفاده ، خالی ، تهی ، اشغال نشده"
+    },
+    {
+        "id": 7,
+        "name": "hardship",
+        "persian": "سختی ، مشقت ، مشکلات"
+    },
+    {
+        "id": 8,
+        "name": "gallant",
+        "persian": "دلاور ، شجاع ، دلیرانه ، مودب"
+    },
+    {
+        "id": 9,
+        "name": "data",
+        "persian": "داده ها ، اطلاعات"
+    },
+    {
+        "id": 10,
+        "name": "unaccustomed",
+        "persian": "عادت نداشتن به ، غیر عادی"
+    },
+    {
+        "id": 11,
+        "name": "bachelor",
+        "persian": "مرد (مجرد)"
+    }
+    ,
+    {
+        "id": 13,
+        "name": "corpse",
+        "persian": "جسد ، جنازه"
+    }
+    ,
+    {
+        "id": 14,
+        "name": "conceal",
+        "persian": "پنهان کردن ، مخفی کردن"
+    }
+    ,
+    {
+        "id": 15,
+        "name": "dismal",
+        "persian": "دلتنگ کننده ،پريشان کننده ،ملالت انگيز"
+    }
+    ,
+    {
+        "id": 12,
+        "name": "qualify",
+        "persian": "مناسب بودن با ، واجد شرایط بودن"
     }
 ]

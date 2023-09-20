@@ -1,5 +1,5 @@
 <template>
-    <div class="card  bg-gradient  p-1 m-3  shadow-lg col-xl-3 col-lg-3 col-md-5 col-sm-11 rounded-pill">
+    <div class="card  bg-gradient  p-1 m-3  shadow-lg col-xl-3 col-lg-3 col-md-5 col-sm-11 rounded-pill" @click="showPersian=!showPersian" v-if="showBox">
         <!-- <img :src="word.img" alt=""> -->
 
 
@@ -7,23 +7,27 @@
             <h5 class="card-title">
                 <span class="title1">{{ word.name }}</span>
             </h5>
-            <p class="card-text vazir">
-            <h3>{{ word.persian }}</h3>
+            <p class="card-text vazir " v-if="showPersian">
+            <span class="vazir title2">{{ word.persian }}</span>
             </p>
 
         </div>
-        <div class=" text-center">
-            <a href="#" class="card-link btn shadow rounded border-success">بله
+        <div class=" text-center" v-if="showPersian">
+            <a href="#"  @click="showBox=false" class="card-link btn shadow rounded border-success">بلد بودم
                 <i class="bi bi-check-circle-fill text-success"></i>
             </a>
-            <a href="#" class="card-link btn shadow border-danger rounded">خیر
-                <i class="bi bi-x-circle text-danger"></i>
+            <a href="#"  class="card-link btn shadow rounded border-danger">
+                بلد نبودم
+                <i class="bi bi-check-circle-fill text-danger"></i>
             </a>
         </div>
         <div>&nbsp;</div>
     </div>
 </template>
 <script setup>
-import { defineProps } from "vue"
+import { ref } from "vue"
+const showPersian=  ref(false)
+const showBox=  ref(true)
 const { word } = defineProps(['word'])
+
 </script>
