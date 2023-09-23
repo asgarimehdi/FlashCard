@@ -1,3 +1,14 @@
+<script setup>
+import { ref } from "vue"
+const showPersian=  ref(false)
+const showBox=  ref(true)
+const { word } = defineProps(['word'])
+const emit = defineEmits("selectRecord")
+const emitSelectRecord=(id)=>
+{
+    emit("selectRecord",id)
+}
+</script>
 <template>
     <div class="card  bg-gradient  p-1 m-3  shadow-lg col-xl-3 col-lg-3 col-md-5 col-sm-11 rounded-pill" @click="showPersian=!showPersian" v-if="showBox">
         <!-- <img :src="word.img" alt=""> -->
@@ -5,7 +16,7 @@
 
         <div class="card-body text-center">
             <h5 class="card-title">
-                <span class="title1">{{ word.name }}</span>
+                <span class="title1" @click="emitSelectRecord(word.id)">{{ word.name }}</span>
             </h5>
             <p class="card-text vazir " v-if="showPersian">
             <span class="vazir title2">{{ word.persian }}</span>
@@ -24,10 +35,4 @@
         <div>&nbsp;</div>
     </div>
 </template>
-<script setup>
-import { ref } from "vue"
-const showPersian=  ref(false)
-const showBox=  ref(true)
-const { word } = defineProps(['word'])
 
-</script>
