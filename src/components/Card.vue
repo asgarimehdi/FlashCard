@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from "vue"
 const showPersian = ref(false)
-
+const hover=ref(false)
 const { word } = defineProps(['word'])
 const emit = defineEmits("selectRecord")
 const emitSelectRecord = (id) => {
     emit("selectRecord", id)
 }
-const hover=ref(false)
+
 </script>
 <template>
     <div class="card  bg-gradient  p-1 m-3  col-xl-3 col-lg-3 col-md-5 col-sm-11 rounded-pill"
