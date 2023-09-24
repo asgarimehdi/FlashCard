@@ -2,11 +2,15 @@
 import Card from "../components/Card.vue"
 import q from "../assets/dic.json"
 import { ref } from "vue"
-const words = ref(q)
+let words = ref(q)
+const wordsFull=ref(q)
 //console.log(words)
 const onRecordSelected = (id) => {
-  console.log("emitted", words.value)
+  
   words.value=words.value.filter(i=>i.id !=id)
+  if(words.value.length<1)
+  words=wordsFull
+  //console.log(wordsFull.value.length)
 }
 </script>
 
