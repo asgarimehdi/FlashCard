@@ -2,9 +2,9 @@
    import { ref, computed } from "vue";
   
 const bar = defineProps(["barPercentage"])
-//const barPercentage1=20
+
 console.log(bar.barPercentage)
-//const percentage=bar.barPercentage * 33
+
 const percentage = computed(() => `${bar.barPercentage/3 * 100}`)
 </script>
 

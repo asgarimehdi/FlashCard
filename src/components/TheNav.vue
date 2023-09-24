@@ -1,7 +1,10 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border border-3">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top border border-3" style="background-color: darkseagreen;">
         <div class="container-fluid">
-            <a class="navbar-brand vazir" href="#">فلش کارت
+            <a class="navbar-brand vazir" href="#">
+                <span class="title2">
+                    فلش کارت
+                </span>
                 <i class="bi bi-translate text-success"></i>
             </a>
 
@@ -28,7 +31,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                            <li><button class="btn btn-success" type="button" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">منوی باز شو از سمت
                                     چپ</button></li>
                         </ul>

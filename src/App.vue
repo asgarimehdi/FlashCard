@@ -27,10 +27,10 @@ import TheOffcanvas from './components/TheOffcanvas.vue';
   }
 @media (min-width: 768px) {
   .title1 {
-    font-size: 4vw;
+    font-size: 8vw;
   }
   .title2 {
-    font-size: 2vw;
+    font-size: 4vw;
   }
 }
 @media (min-width: 1024px) {
