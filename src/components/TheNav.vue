@@ -2,12 +2,13 @@
     <nav class="navbar navbar-expand-lg navbar-light sticky-top border border-3" style="background-color: darkseagreen;">
         <div class="container-fluid">
             <a class="navbar-brand vazir" href="#">
-                <span class="title2">
-                    فلش کارت
+                <span class="title1">
+                    لغت حفظ کن
                 </span>
                 <i class="bi bi-translate text-success"></i>
+                
             </a>
-
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -18,7 +19,10 @@
                         <a class="nav-link active" aria-current="page" href="#">صفحه اول</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">مراحل پیشرفت</a>
+                        <a class="nav-link  " type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                    راهنما
+                                </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -38,10 +42,13 @@
                     </li>
                 </ul>
 
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div class="d-flex">
+                    <i class="bi bi-bell text-white btn"></i> 
+                    
+                    <i class="bi bi-power text-warning btn"></i>
+                    
+                    
+                </div>
 
             </div>
         </div>

@@ -1,10 +1,11 @@
 <script setup>
+import Hero from '../components/Hero.vue'
 import Card from "../components/Card.vue"
 import CardsHeader from "../components/CardsHeader.vue"
 import Result from "../components/Result.vue"
 import q from "../assets/dic.json"
 import { ref } from "vue"
-const num=14
+const num=1
 let words = ref(q)
 const wordsFull = ref(q)
 const level = ref(0)
@@ -45,9 +46,12 @@ const findWord=(idd)=>{
 </script>
 
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid ">
+    
     <CardsHeader :barPercentage="level" />
-    <div class="row  justify-content-center">
+    
+    <div class="row  justify-content-center bg-dark bg-gradient">
+      
       <Card v-if="level < 3" v-for="word in words" :key="word.name" :word="word" @notOkRecord="onRecordNotOk"
         @OkRecord="onRecordOk" />
       <Result v-else :done="done" :notDone="notDone" />
