@@ -1,5 +1,5 @@
 <script setup>
-import Hero from '../components/Hero.vue'
+
 import Card from "../components/Card.vue"
 import CardsHeader from "../components/CardsHeader.vue"
 import Result from "../components/Result.vue"
@@ -55,6 +55,7 @@ const findWord=(idd)=>{
       <Card v-if="level < 3" v-for="word in words" :key="word.name" :word="word" @notOkRecord="onRecordNotOk"
         @OkRecord="onRecordOk" />
       <Result v-else :done="done" :notDone="notDone" />
+      
     </div>
   </div>
 </template>

@@ -14,9 +14,9 @@ const emitNotOkRecord = (id) => {
 
 </script>
 <template>
-    <div class="card  bg-gradient  p-1 m-3  col-xl-3 col-lg-5 col-md-11 col-sm-11 rounded-pill" @mouseover="hover = true" 
+    <div class="card  bg-gradient  p-1 m-3  col-xl-3 col-lg-5 col-md-11 col-sm-11 rounded" @mouseover="hover = true" 
         @mouseleave="hover = false" :class="{ 'shadow ': hover, 'shadow-lg': !hover }" @click="showPersian = !showPersian">
-        <!-- <img :src="word.img" alt=""> -->
+        <img :src="`/src/assets/words/${word.name}.jpg`" alt="" class=" col-10 container rounded">
 
 
         <div class="card-body text-center">
