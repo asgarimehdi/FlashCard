@@ -11,12 +11,14 @@ const emitOkRecord = (id) => {
 const emitNotOkRecord = (id) => {
     emit('notOkRecord', id)
 }
-
+const soundPlay=(file)=>{
+    const sound =  new Audio( `src/assets/voices/${file}.wav` ).play()
+}
 </script>
 <template>
     <div class="card  bg-gradient  p-1 m-3  col-xl-3 col-lg-5 col-md-11 col-sm-11 rounded" @mouseover="hover = true" 
         @mouseleave="hover = false" :class="{ 'shadow ': hover, 'shadow-lg': !hover }" @click="showPersian = !showPersian">
-        <img :src="`/src/assets/words/${word.name}.jpg`" alt="" class=" col-10 container rounded">
+        <img :src="`src/assets/words/${word.name}.jpg`" alt="" class=" col-10 container rounded">
 
 
         <div class="card-body text-center">
@@ -34,6 +36,9 @@ const emitNotOkRecord = (id) => {
 
         </div>
         <div class=" text-center" v-show="showPersian">
+            <a href="#" @click="soundPlay(word.name)" class="card-link btn title1"> 
+                <i class="bi bi-volume-up-fill text-primary"></i>
+            </a>
             <a href="#" @click="emitOkRecord(word.id)" class="card-link btn shadow rounded border-success title2">بلد بودم
                 <i class="bi bi-check-circle-fill text-success"></i>
             </a>
