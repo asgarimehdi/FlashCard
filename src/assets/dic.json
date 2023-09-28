@@ -2,17 +2,41 @@
     {
         "id": 1,
         "name": "abandon",
-        "persian": "ترک کردن ، رها سازی ، دست کشیدن از"
+        "persian": "ترک کردن ، رها سازی ، دست کشیدن از",
+        "ex1": "The soldier could not abandon his friends who were hurt in battle.",
+        "ex1Trans":"سرباز نمی‌توانست دوستانش را که در جنگ زخمی شده بودند رها کند.",
+        "ex2":"When Roy abandoned his family, the police went looking for him.",
+        "ex2Trans":"وقتی 'روی' خانواده‌اش را ترک کرد، پلیس به دنبالش گشت.",
+        "syn":["give up","leave","do away with"],
+        "opp":["claim","continue","keep"],
+        "type":"verb",
+        "dif":"to leave a place, thing, or person, usually forever"
     },
     {
         "id": 2,
         "name": "keen",
-        "persian": "برنده ، تیز ، علاقمند ، قوی ، عمیق ، حساس ، تیزهوش"
+        "persian": "برنده ، تیز ، علاقمند ، قوی ، عمیق ، حساس ، تیزهوش",
+        "ex1": "The butcher's keen knife cut through the meat.",
+        "ex1Trans":"چاقوی تیز قصاب، گوشت را از (وسط) برید.",
+        "ex2":"The keen blade went through the weeds.",
+        "ex2Trans":"تیغه تیز از میان علف‌ها عبور کرد.",
+        "syn":["sharp","sharp-edged"],
+        "opp":["blunt"],
+        "type":"adj",
+        "dif":"very interested, eager, or wanting (to do) something very much"
     },
     {
         "id": 3,
         "name": "jealous",
-        "persian": "حسود ، حسادت"
+        "persian": "حسود ، حسادت",
+        "ex1": "The butcher's keen knife cut through the meat.",
+        "ex1Trans":"چاقوی تیز قصاب، گوشت را از (وسط) برید.",
+        "ex2":"The keen blade went through the weeds.",
+        "ex2Trans":"تیغه تیز از میان علف‌ها عبور کرد.",
+        "syn":["covetous","envious"],
+        "opp":["admiring","proud"],
+        "type":"adj",
+        "dif":"upset and angry because someone that you love seems interested in another person"
     },
     {
         "id": 4,

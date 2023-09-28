@@ -1,11 +1,11 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top border border-3" style="background-color: darkseagreen;">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top border border-3" style="background-color: rgb(33, 53, 95);">
         <div class="container-fluid">
             <a class="navbar-brand vazir" href="#">
-                <span class="title1">
-                    لغت حفظ کن
+                <span class="title1 ">
+                    لغت یاد بگیر
                 </span>
-                <i class="bi bi-translate text-success"></i>
+                <i class="bi bi-translate text-warning"></i>
                 
             </a>
             
