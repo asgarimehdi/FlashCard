@@ -14,44 +14,47 @@ const emitNotOkRecord = (id) => {
 const soundPlay = (file) => {
     const sound = new Audio(`src/assets/voices/${file}.wav`).play()
 }
+const str2arr = (tmp) => {
+    if (typeof (tmp) == "string")
+        return tmp.split(',')
+}
 
 </script>
 <template>
-    <div class="card h-100 bg-gradient  p-2 m-2  col-xl-3 col-lg-5 col-md-11 col-sm-11 rounded"
-        @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'shadow ': hover, 'shadow-lg': !hover }"
-        @click="showPersian = !showPersian">
-<div><img :src="`src/assets/words/${word.name}.jpg`" alt="" class=" col-12  rounded"></div>
-        
+    <div class="card h-100 bg-gradient  p-2 m-2  col-xl-3 col-lg-5 col-md-11 col-sm-11 rounded" @mouseover="hover = true"
+        @mouseleave="hover = false" :class="{ 'shadow ': hover, 'shadow-lg': !hover }" @click="showPersian = !showPersian">
+        <div><img :src="`src/assets/words/${word.word}.jpg`" alt="" class=" col-12  rounded"></div>
+
         <div class="fs-6">
-                <button href="#" @click="soundPlay(word.name)" class="card-link btn ">
-                    <i class="bi bi-volume-up-fill text-primary"></i>
-                </button>
-                <span class="text-primary bg-light badge ">{{ word.type }}</span>
-            </div>
+            <button href="#" @click="soundPlay(word.word)" class="card-link btn ">
+                <i class="bi bi-volume-up-fill text-primary"></i>
+            </button>
+            <span class="text-primary bg-light badge ">{{ word.type }}</span>
+        </div>
 
         <div class="card-body">
-            
+
 
             <h5 class="card-title text-center">
 
-                <span class="title1 bg-light border rounded-pill px-2 pt-0 pb-2">{{ word.name }}
+                <span class="title1 bg-light border rounded-pill px-2 pt-0 pb-2">{{ word.word }}
                 </span>
-                <div class="fs-6 text-end mt-3">{{ word.dif }}</div>
+                <div class="fs-6 text-end mt-3">{{ word.def }}</div>
             </h5>
             <p class="card-text vazir " v-show="showPersian">
-                <span class="vazir title2">{{ word.persian }}</span>
+                <span class="vazir title2">{{ word.fa }}</span>
 
 
             </p>
 
             <p class="card-text vazir text-center border border-success" v-show="showPersian">
             <div class="text-start p-1"> مترادف:</div>
-            <span class="title2 text-white bg-success badge m-1" v-for="syn in word.syn"> {{ syn }} </span>
+            <span class="title2 text-white bg-success badge m-1" v-for="syn in str2arr(word.syn)"> {{ syn }} </span>
             </p>
 
             <p class="card-text vazir text-center border border-danger" v-show="showPersian">
             <div class="text-start p-1"> متضاد:</div>
-            <span class="title2 text-white bg-danger badge m-1" v-for="opp in word.opp">{{ opp }}</span>
+            <span class="title2 text-white bg-danger badge m-1" v-for="opp in str2arr(word.opp)">{{ opp }}</span>
             </p>
 
             <div v-show="showPersian">
@@ -61,14 +64,14 @@ const soundPlay = (file) => {
                     <span class="vazir title2">{{ word.ex1 }}</span>
                 </p>
                 <p class="card-text vazir  text-start ">
-                    <span class="vazir title2">{{ word.ex1Trans }}</span>
+                    <span class="vazir title2">{{ word.ex1Fa }}</span>
                 </p>
 
                 <p class="card-text vazir text-primary text-end " dir="ltr">
                     <span class="vazir title2">{{ word.ex2 }}</span>
                 </p>
                 <p class="card-text vazir text-start ">
-                    <span class="vazir title2">{{ word.ex2Trans }}</span>
+                    <span class="vazir title2">{{ word.ex2Fa }}</span>
                 </p>
             </div>
         </div>

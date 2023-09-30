@@ -1,13 +1,19 @@
 <script setup>
-
+import { ref, onMounted } from "vue"
 import Card from "../components/Card.vue"
 import CardsHeader from "../components/CardsHeader.vue"
 import Result from "../components/Result.vue"
+import { allWords } from "../http/words-api"
 import q from "../assets/dic.json"
-import { ref } from "vue"
-const num=1
-let words = ref(q)
-const wordsFull = ref(q)
+let words = ref([])
+const wordsFull = ref([])
+onMounted(async () => {
+  const { data } = await allWords()
+  words.value = ref(data)
+  wordsFull.value = ref(data.value)
+  console.log(words)
+})
+const num = 1
 const level = ref(0)
 const done = []
 const notDone = []
@@ -39,23 +45,23 @@ const onRecordNotOk = (id) => {
   }
 
 }
-const findWord=(idd)=>{
-  return wordsFull.value.find(({id})=>id===idd)
+const findWord = (idd) => {
+  return wordsFull.value.find(({ id }) => id === idd)
 }
 //console.log(done)
 </script>
 
 <template>
   <div class="container-fluid ">
-    
+
     <CardsHeader :barPercentage="level" />
-    
+
     <div class="row  justify-content-center bg-dark bg-gradient">
-      
-      <Card v-if="level < 3" v-for="word in words" :key="word.name" :word="word" @notOkRecord="onRecordNotOk"
+
+      <Card v-if="level < 3" v-for="word in words.value" :key="word.word" :word="word" @notOkRecord="onRecordNotOk"
         @OkRecord="onRecordOk" />
       <Result v-else :done="done" :notDone="notDone" />
-      
+
     </div>
   </div>
 </template>

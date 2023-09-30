@@ -10,15 +10,15 @@ console.log(notDone)
         </div>
         <ul>
             <li v-for="word in done" :key="word">
-            <span class="title1">{{ word.name }} </span> 
-           <span class="title2"> {{ word.persian }} </span>
+            <span class="title1">{{ word.word }} </span> 
+           <span class="title2"> {{ word.fa }} </span>
             </li>
         </ul>
         بلد نبودید: 
         <ul>
             <li v-for="word in notDone" :key="word">
-            <span class="title1">{{ word.name }} </span> 
-           <span class="title2"> {{ word.persian }} </span>
+            <span class="title1">{{ word.word }} </span> 
+           <span class="title2"> {{ word.fa }} </span>
             </li>
         </ul>
     </div>
