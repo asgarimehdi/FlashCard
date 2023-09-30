@@ -1,9 +1,10 @@
 <script setup>
 const { done,notDone } = defineProps(['done','notDone'])
 console.log(notDone)
+console.log(done)
 </script>
 <template>
-    <div class="container">
+    <div class="container bg-light">
         <div>
             <h1> جلسه با موفقیت به پایان رسید</h1>
             <h3> برای ذخیره در سرور روی گزینه ثبت نهایی کلیک کنید</h3>
