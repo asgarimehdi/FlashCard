@@ -10,8 +10,8 @@ let wordsFull = ref([])
 onMounted(async () => {
   const { data } = await allWords()
 
-  words.value= ref(data)
-  wordsFull.value = ref(data)
+  words.value= ref(data.data)
+  wordsFull.value = ref(data.data)
   //console.log(typeof(words.value.value))
 })
 const num = 1

@@ -38,7 +38,7 @@ const str2arr = (tmp) => {
 
 </script>
 <template>
-    <div class="card h-120 bg-gradient   m-1  col-xl-3 col-lg-5 col-md-11 col-sm-11 rounded" @mouseover="hover = true"
+    <div class="card h-100 bg-gradient   m-1  col-xl-3 col-lg-5 col-md-11 col-sm-11 rounded" @mouseover="hover = true"
         @mouseleave="hover = false" :class="{ 'shadow ': hover, 'shadow-lg': !hover }">
 
 

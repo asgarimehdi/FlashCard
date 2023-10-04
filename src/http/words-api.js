@@ -1,5 +1,5 @@
 import api from "./api"
 
-const resource="/words"
+const resource="/api/words"
 
 export const allWords=()=> api.get(resource)
