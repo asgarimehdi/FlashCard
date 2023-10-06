@@ -22,6 +22,9 @@
                         <router-link :to="{name:'login'}" class="nav-link active" aria-current="page"> لاگین</router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link :to="{name:'register'}" class="nav-link active" aria-current="page"> ثبت نام</router-link>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link  " type="button" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                                     راهنما

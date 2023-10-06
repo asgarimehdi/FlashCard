@@ -23,11 +23,10 @@
 <script setup>
 
 import {ref} from "vue";
-import axios from "axios";
+import axios from "../components/axios";
 
 import { useRouter } from "vue-router";
-axios.defaults.withCredentials=true;
-axios.defaults.baseURL="http://localhost"
+
 const router=useRouter();
 
 const getToken=async()=>{
