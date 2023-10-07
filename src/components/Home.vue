@@ -1,20 +1,19 @@
 <template>
-    <div class="container col-2">
+    <div class="container col-2" v-if="authStore.user">
         <h1>welcome</h1>
-        <h2>{{ user?.name }}</h2>
-        <h2>{{ user?.email }}</h2>
-
+        <h2>{{ authStore.user?.name }}</h2>
+        <h2>{{ authStore.user?.email }}</h2>
+    </div>
+    <div class="container col-2" v-else>
+        <h1>login first</h1>        
     </div>
 </template>
 <script setup>
 
-import {ref,onMounted} from "vue";
-import axios from "axios";
-axios.defaults.withCredentials=true;
-axios.defaults.baseURL="http://localhost"
-const user=ref();
-onMounted(async()=>{
-    const data=await axios.get("/api/user");
-    user.value=data.data;
+import { onMounted } from "vue";
+import { useAuthStore } from "../stores/auth";
+const authStore = useAuthStore();
+onMounted(async () => {
+    await authStore.getUser();
 })
 </script>

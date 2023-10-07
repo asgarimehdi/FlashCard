@@ -1,6 +1,6 @@
 <template>
     <div class="col-4 container">
-        <form @submit.prevent="handleRegister">
+        <form @submit.prevent="authStore.handleRegister(form)">
             <div class="form-group">
                 <label for="Input">نام</label>
                 <input type="text" class="form-control" id="Input" v-model="form.name" aria-describedby="nameHelp"
@@ -31,29 +31,15 @@
 <script setup>
 
 import { ref } from "vue";
-import axios from "../components/axios";
+import { useAuthStore } from "../stores/auth";
+const authStore = useAuthStore();
 
-import { useRouter } from "vue-router";
 
-const router = useRouter();
-
-const getToken = async () => {
-    await axios.get("/sanctum/csrf-cookie")
-}
 const form = ref({
     name: '',
     email: '',
     password: '',
     passwordConfirmation: ''
 });
-const handleRegister = async () => {
-    await getToken();
-    await axios.post('/register', {
-        name: form.value.name,
-        email: form.value.email,
-        password: form.value.password,
-        password_confirmation: form.value.password_confirmation
-    });
-    router.push({ name: 'home' })
-}
+
 </script>

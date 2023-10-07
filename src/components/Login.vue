@@ -1,6 +1,6 @@
 <template>
     <div class="col-4 container">
-        <form @submit.prevent="handleLogin">
+        <form @submit.prevent="authStore.handleLogin(form)">
             <div class="form-group">
                 
                 <label for="exampleInputEmail1">ایمیل</label>
@@ -23,15 +23,13 @@
 <script setup>
 
 import {ref} from "vue";
-import axios from "../components/axios";
-
+import { useAuthStore } from "../stores/auth";
+const authStore = useAuthStore();
 import { useRouter } from "vue-router";
 
 const router=useRouter();
 
-const getToken=async()=>{
-    await axios.get("/sanctum/csrf-cookie")
-}
+
 const form=ref({
     email:'',
     password:''
