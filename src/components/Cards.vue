@@ -45,7 +45,17 @@ const onRecordNotOk = (id) => {
       level.value++
     }
   }
+  words.value.value=shuffleArray(words.value.value)
 
+}
+const shuffleArray = array => {
+  // تابعی برای تصادفی کردن یک آرایه
+  let shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
 }
 const findWord = (idd) => {
   return wordsFull.value.value.find(({ id }) => id === idd)
@@ -58,7 +68,7 @@ const findWord = (idd) => {
 
     <CardsHeader :barPercentage="level" />
 
-    <div class="row  justify-content-center bg-dark bg-gradient">
+    <div class="row  justify-content-center  bg-gradient">
 
       <Card v-if="level < 3" v-for="word in words.value" :key="word.word" :word="word" @notOkRecord="onRecordNotOk"
         @OkRecord="onRecordOk" />

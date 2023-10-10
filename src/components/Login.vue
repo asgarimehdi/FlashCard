@@ -4,13 +4,15 @@
             <div class="form-group">
                 
                 <label for="exampleInputEmail1">ایمیل</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" v-model="form.email" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-                
+                <input type="email" class="form-control " :class="{'is-invalid' : authStore.errors.email}" id="exampleInputEmail1" v-model="form.email" aria-describedby="emailHelp"
+                    placeholder="Enter email" >
+                    <div class="invalid-feedback" v-if="authStore.errors.email">ایمیل صحیح را وارد کنید</div>
             </div>
+            
             <div class="form-group">
                 <label for="exampleInputPassword1">پسورد</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" v-model="form.password" placeholder="Password">
+                <input type="password" class="form-control" :class="{'is-invalid' : authStore.errors.password}" id="exampleInputPassword1" v-model="form.password" placeholder="Password">
+                <div class="invalid-feedback" v-if="authStore.errors.password"> پسورد را وارد کنید</div>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">

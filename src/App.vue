@@ -50,4 +50,9 @@ import TheOffcanvas from './components/TheOffcanvas.vue';
     font-size: 1vw;
   }
 }
+.form-group.is-invalid{
+  .invalid-feedback{
+    display: block;
+  }
+}
 </style>
