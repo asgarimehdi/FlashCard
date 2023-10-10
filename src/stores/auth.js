@@ -1,8 +1,7 @@
 
 import { defineStore } from 'pinia'
-import axios from 'axios'
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://localhost"
+import api from "../http/api"
+
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     authUser: null
@@ -12,16 +11,16 @@ export const useAuthStore = defineStore('auth', {
   },
   actions: {
     async getToken() {
-      await axios.get("/sanctum/csrf-cookie")
+      await api.get("/sanctum/csrf-cookie")
     },
     async getUser() {
       this.getToken();
-      const data = await axios.get("/api/user");
+      const data = await api.get("/api/user");
       this.authUser = data.data
     },
     async handleLogin(data) {
       await this.getToken();
-      await axios.post('/login', {
+      await api.post('/login', {
         email: data.email,
         password: data.password
       });
@@ -29,7 +28,7 @@ export const useAuthStore = defineStore('auth', {
     },
     async handleRegister(data) {
       await this.getToken();
-      await axios.post('/register', {
+      await api.post('/register', {
         name: data.name,
         email: data.email,
         password: data.password,
@@ -40,7 +39,7 @@ export const useAuthStore = defineStore('auth', {
     ,
     async handleLogout(data) {
       
-      await axios.post('/logout');
+      await api.post('/logout');
       this.authUser=null
       this.router.push({ name: 'login' })
     }
