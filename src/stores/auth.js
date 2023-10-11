@@ -59,11 +59,25 @@ export const useAuthStore = defineStore('auth', {
       this.authErrors = [];
       await this.getToken();
       try {
-        await api.post('/forget-password', {
+        await api.post('/forgot-password', {
 
-          email: data.email,
+          email: email,
         });
 
+      }
+      catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
+      }
+    }
+    ,
+    async handleResetPassword(resetData) {
+      this.authErrors = [];
+      await this.getToken();
+      try {
+        await api.post('/reset-password', resetData);
+        this.router.push({ name: 'login' })
       }
       catch (error) {
         if (error.response.status === 422) {
