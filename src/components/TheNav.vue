@@ -6,9 +6,9 @@
                     لغت یاد بگیر
                 </span>
                 <i class="bi bi-translate text-warning"></i>
-                
+
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -16,15 +16,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">صفحه اول</a>
+                        <router-link :to="{ name: 'home' }" class="nav-link active" aria-current="page">صفحه اول</router-link>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  " type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                    راهنما
-                                </a>
-                    </li>
-                    <li class="nav-item dropdown">
+                    <template v-if="!authStore.user">
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'login' }" class="nav-link active" aria-current="page">
+                                لاگین</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'register' }" class="nav-link active" aria-current="page"> ثبت
+                                نام</router-link>
+                        </li>
+                    </template>
+                    <template v-else>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'cards' }" class="nav-link active" aria-current="page">
+                                کارتها</router-link>
+                        </li>
+                        <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             تنظیمات
@@ -40,17 +49,32 @@
                                     چپ</button></li>
                         </ul>
                     </li>
+                    </template>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link  " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight">
+                            راهنما
+                        </a>
+                    </li>
+                    
                 </ul>
 
-                <div class="d-flex">
-                    <i class="bi bi-bell text-white btn"></i> 
-                    
-                    <i class="bi bi-power text-warning btn"></i>
-                    
-                    
+                <div class="d-flex" v-if="authStore.user">
+                    <i class="bi bi-bell text-white btn"></i>
+
+                    <i class="bi bi-power text-warning btn" @click="authStore.handleLogout"></i>
+
+
                 </div>
 
             </div>
         </div>
     </nav>
 </template>
+<script setup>
+import { RouterLink } from 'vue-router'
+import { useAuthStore } from "../stores/auth";
+const authStore = useAuthStore();
+</script>

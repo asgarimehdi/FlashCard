@@ -1,61 +1,102 @@
-import { defineStore } from "pinia";
-import { computed, ref } from "vue";
-import { csrfCookie, login, register, logout, getUser } from "../http/auth-api";
 
-export const useAuthStore = defineStore("authStore", () => {
-  const user = ref(null);
-  const errors = ref({});
 
-  const isLoggedIn = computed(() => !!user.value);
+import { defineStore } from 'pinia'
+import api from "../http/api"
 
-  const fetchUser = async () => {
-    try {
-      const { data } = await getUser();
-      user.value = data;
-    } catch (error) {
-      user.value = null;
-    }
-  };
-
-  const handleLogin = async (credentials) => {
-    await csrfCookie();
-    try {
-      await login(credentials);
-      await fetchUser();
-      errors.value = {};
-    } catch (error) {
-      if (error.response && error.response.status === 422) {
-        errors.value = error.response.data.errors;
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    authUser: null,
+    authErrors: [],
+    authStatus: null,
+  }),
+  getters: {
+    user: (state) => state.authUser,
+    errors: (state) => state.authErrors,
+    status: (state) => state.authStatus
+  },
+  actions: {
+    async getToken() {
+      await api.get("/sanctum/csrf-cookie")
+    },
+    async getUser() {
+      this.getToken();
+      const data = await api.get("/api/user");
+      this.authUser = data.data
+    },
+    async handleLogin(data) {
+      this.authErrors = [];
+      await this.getToken();
+      try {
+        await api.post('/login', {
+          email: data.email,
+          password: data.password
+        });
+        this.router.push({ name: 'home' })
+      }
+      catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
+      }
+    },
+    async handleRegister(data) {
+      this.authErrors = [];
+      await this.getToken();
+      try {
+        await api.post('/register', {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          password_confirmation: data.password_confirmation
+        });
+        this.router.push({ name: 'home' })
+      }
+      catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
       }
     }
-  };
-
-  const handleRegister = async (newUser) => {
-    try {
-      await register(newUser);
-      await handleLogin({
-        email: newUser.email,
-        password: newUser.password,
-      });
-    } catch (error) {
-      if (error.response && error.response.status === 422) {
-        errors.value = error.response.data.errors;
+    ,
+    async handleForgetPassword(email) {
+      this.authErrors = [];
+      await this.getToken();
+      try {
+        const response = await api.post('/forgot-password', {
+          email: email,
+        });
+        this.authStatus = response.data.status;
+      }
+      catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
       }
     }
-  };
+    ,
+    async handleResetPassword(resetData) {
+      this.authErrors = [];
+      await this.getToken();
+      try {
+        const response = await api.post('/reset-password', resetData);
+        this.router.push({ name: 'login' })
+        this.authStatus = response.data.status;
+      }
+      
+      catch (error) {
+        if (error.response.status === 422) {
+          this.authErrors = error.response.data.errors;
+        }
+      }
+    }
+    ,
+    async handleLogout(data) {
 
-  const handleLogout = async () => {
-    await logout();
-    user.value = null;
-  };
+      await api.post('/logout');
+      this.authUser = null
+      this.router.push({ name: 'login' })
+    }
+  }
 
-  return {
-    user,
-    errors,
-    isLoggedIn,
-    fetchUser,
-    handleLogin,
-    handleRegister,
-    handleLogout,
-  };
-});
+})
+

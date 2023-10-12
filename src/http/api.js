@@ -1,8 +1,9 @@
-import axios from "axios";
-axios.defaults.withCredentials = true;
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
-});
+import axios from 'axios'
+axios.defaults.withCredentials = true;
+const api=axios.create({
+    baseURL:"http://192.168.165.4"
+})
+
 
 export default api;
