@@ -1,4 +1,5 @@
 
+
 import { defineStore } from 'pinia'
 import api from "../http/api"
 
@@ -98,3 +99,4 @@ export const useAuthStore = defineStore('auth', {
   }
 
 })
+
