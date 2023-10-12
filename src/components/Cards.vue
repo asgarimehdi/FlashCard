@@ -10,7 +10,7 @@ let wordsFull = ref([])
 onMounted(async () => {
   const { data } = await allWords()
 
-  words.value= ref(data.data)
+  words.value = ref(data.data)
   wordsFull.value = ref(data.data)
   //console.log(typeof(words.value.value))
 })
@@ -45,7 +45,7 @@ const onRecordNotOk = (id) => {
       level.value++
     }
   }
-  words.value.value=shuffleArray(words.value.value)
+  words.value.value = shuffleArray(words.value.value)
 
 }
 const shuffleArray = array => {
@@ -69,11 +69,23 @@ const findWord = (idd) => {
     <CardsHeader :barPercentage="level" />
 
     <div class="row  justify-content-center  bg-gradient">
-
-      <Card v-if="level < 3" v-for="word in words.value" :key="word.word" :word="word" @notOkRecord="onRecordNotOk"
-        @OkRecord="onRecordOk" />
-      <Result v-if="level==3" :done="done1" :notDone="notDone1" />
+      <TransitionGroup>
+        <Card v-if="level < 3" v-for="word in words.value" :key="word.word" :word="word" @notOkRecord="onRecordNotOk"
+          @OkRecord="onRecordOk" />
+      </TransitionGroup>
+      <Result v-if="level == 3" :done="done1" :notDone="notDone1" />
 
     </div>
   </div>
 </template>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
