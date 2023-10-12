@@ -5,11 +5,13 @@ import api from "../http/api"
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     authUser: null,
-    authErrors: []
+    authErrors: [],
+    authStatus: null,
   }),
   getters: {
     user: (state) => state.authUser,
-    errors: (state) => state.authErrors
+    errors: (state) => state.authErrors,
+    status: (state) => state.authStatus
   },
   actions: {
     async getToken() {
@@ -59,11 +61,10 @@ export const useAuthStore = defineStore('auth', {
       this.authErrors = [];
       await this.getToken();
       try {
-        await api.post('/forgot-password', {
-
+        const response = await api.post('/forgot-password', {
           email: email,
         });
-
+        this.authStatus = response.data.status;
       }
       catch (error) {
         if (error.response.status === 422) {
@@ -76,9 +77,11 @@ export const useAuthStore = defineStore('auth', {
       this.authErrors = [];
       await this.getToken();
       try {
-        await api.post('/reset-password', resetData);
+        const response = await api.post('/reset-password', resetData);
         this.router.push({ name: 'login' })
+        this.authStatus = response.data.status;
       }
+      
       catch (error) {
         if (error.response.status === 422) {
           this.authErrors = error.response.data.errors;

@@ -1,5 +1,7 @@
 <template>
-    <div class="col-4 container">
+    <div class="col-4 container bg-light rounded p-3 mt-3 vazir">
+        <h2>فراموشی رمز عبور</h2>
+        <div class="m-2 p-2 text-success" v-if="authStore.status">{{ authStore.status }}</div>
         <form @submit.prevent="authStore.handleForgetPassword(email)">
             <div class="form-group">
                 

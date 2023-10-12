@@ -1,5 +1,7 @@
 <template>
-    <div class="col-4 container">
+    <div class="col-4 container bg-light rounded p-3 mt-3 vazir">
+        <h2>فراموشی رمز عبور</h2>
+        <div class="m-2 p-2 text-success" v-if="authStore.status">{{ authStore.status }}</div>
         <form @submit.prevent="authStore.handleResetPassword(form)">
              
            
@@ -13,9 +15,10 @@
                 <input type="password" class="form-control" :class="{'is-invalid' : authStore.errors.password}" id="password_confirmation" v-model="form.password_confirmation"
                     placeholder="تکرار پسورد">
                     <div class="invalid-feedback" v-if="authStore.errors.password"> {{authStore.errors.password[0]}}</div>
+                    <div class="text-danger" v-if="authStore.errors.email"> {{authStore.errors.email[0]}}</div>
             </div>
            
-            <button type="submit" class="btn btn-primary">ورود</button>
+            <button type="submit" class="btn btn-primary">ثبت</button>
         </form>
     </div>
 </template>
